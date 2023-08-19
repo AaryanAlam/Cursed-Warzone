@@ -7,6 +7,8 @@ public class playerMovement : MonoBehaviour
     public float moveSpeed = 5.0f;
     public float jumpForce = 5.0f;
     public float gravity = -9.81f;
+    public float top;
+    public bool inLook = false;
     public Transform playerCamera;
     private CharacterController controller;
     private Vector3 velocity;
@@ -31,13 +33,43 @@ public class playerMovement : MonoBehaviour
         {
             moveSpeed = 5f;
         }
+
+        if (Input.GetKey(KeyCode.E))
+        {
+            top = 1;
+        } else
+        {
+            top = 0;
+        }
+
+        if (Input.GetKey(KeyCode.Q))
+        {
+            top = -1;
+        }
+        else
+        {
+            top = 0;
+        }
+        Vector3 pos = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
+        if (Input.GetKey(KeyCode.E))
+        {
+            inLook = true;
+            Debug.Log(inLook);
+            pos += transform.right * 1f;
+            mainCam.transform.rotation = Quaternion.Euler(mainCam.transform.rotation.x, mainCam.transform.rotation.y, mainCam.transform.rotation.z + -45f);
+        } else { inLook = false; }
+        if (Input.GetKey(KeyCode.Q))
+        {
+            inLook = true;
+            Debug.Log(inLook);
+            pos -= transform.right * 1f;
+            mainCam.transform.rotation = Quaternion.Euler(mainCam.transform.rotation.x, mainCam.transform.rotation.y, mainCam.transform.rotation.z + 45f);
+        } else { inLook = false; }
+        mainCam.transform.position = pos;
     }
 
     private void HandleMovement()
     {
-        Vector3 pos = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
-        mainCam.transform.position = pos;
-
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
@@ -48,7 +80,13 @@ public class playerMovement : MonoBehaviour
         Vector3 movement = moveDirection * moveSpeed * Time.deltaTime;
         controller.Move(movement + velocity * Time.deltaTime);
 
-        float rotationX = Input.GetAxis("Mouse X") * playerCamera.GetComponent<lookScript>().sensitivityY;
-        transform.Rotate(Vector3.up * rotationX);
+        if (!inLook)
+        {
+            float rotationX = Input.GetAxis("Mouse X") * playerCamera.GetComponent<lookScript>().sensitivityY;
+            transform.Rotate(Vector3.up * rotationX);
+
+            Debug.Log("Searching 88");
+        }
+
     }
 }

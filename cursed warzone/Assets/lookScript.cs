@@ -18,12 +18,18 @@ public class lookScript : MonoBehaviour
 
     void Update()
     {
-        float rotationY = Input.GetAxis("Mouse Y") * sensitivityX;
-        float rotationX = Input.GetAxis("Mouse X") * sensitivityY;
-        if (rotationY > 0)
-            Angles = new Vector3(Mathf.MoveTowards(Angles.x, -80, rotationY), Angles.y + rotationX, 0);
-        else
-            Angles = new Vector3(Mathf.MoveTowards(Angles.x, 80, -rotationY), Angles.y + rotationX, 0);
-        transform.localEulerAngles = Angles;
+        if (player.GetComponent<playerMovement>().inLook == false)
+        {
+            float rotationY = Input.GetAxis("Mouse Y") * sensitivityX;
+            float rotationX = Input.GetAxis("Mouse X") * sensitivityY;
+            if (rotationY > 0)
+                Angles = new Vector3(Mathf.MoveTowards(Angles.x, -80, rotationY), Angles.y + rotationX, 0);
+            else
+                Angles = new Vector3(Mathf.MoveTowards(Angles.x, 80, -rotationY), Angles.y + rotationX, 0);
+            transform.localEulerAngles = Angles;
+            Debug.Log("Searching 30");
+
+        }
+
     }
 }
