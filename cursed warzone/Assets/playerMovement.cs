@@ -1,92 +1,115 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class playerMovement : MonoBehaviour
 {
-    public float moveSpeed = 5.0f;
-    public float jumpForce = 5.0f;
+    public AudioSource source;
+    public AudioClip walking;
+    public float speed = 5f;
+    public float jumpSpeed = 5f;
     public float gravity = -9.81f;
-    public float top;
-    public bool inLook = false;
-    public Transform playerCamera;
-    private CharacterController controller;
-    private Vector3 velocity;
-    public Camera mainCam;
+    public float crouchHeight = 1f;
+    public float lookSensitivity = 2f;
+    public float superDashCost = 35.0f;
+    private float _originalHeight;
+    public bool j = true;
 
-    private void Start()
+
+    private CharacterController _controller;
+    public Transform _camera;
+
+    void Start()
     {
-        controller = GetComponent<CharacterController>();
-        Cursor.visible = true;
+        _controller = GetComponent<CharacterController>();
+        _originalHeight = _controller.height;
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
 
     }
-
-    private void Update()
+    private void Awake()
     {
-        HandleMovement();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
+
+
+    void Update()
+    {
+
+
+
+        // Getting x and z axis
+        float x = Input.GetAxis("Horizontal");
+        float z = Input.GetAxis("Vertical");
+
+        // Making Move Command for Character Controller
+        Vector3 move = transform.right * x + transform.forward * z;
+
+        // Assigning to Character Controller
+        _controller.Move(move * speed * Time.deltaTime);
+
+        // Jump Command
+        if (_controller.isGrounded && Input.GetButtonDown("Jump"))
+        {
+            _controller.Move(Vector3.up * jumpSpeed * Time.deltaTime);
+        }
+
+        // Using Jump in Character Controller
+        _controller.Move(Vector3.up * gravity * Time.deltaTime);
+
+
+        // Crouch
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
+            _controller.height = crouchHeight;
+            speed = 2.5f;
+        }
+        else
+        {
+            _controller.height = _originalHeight;
+            speed = 5;
+        }
+
+        // Run
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            moveSpeed = 12.5f;
+            speed = 8f;
+            
         }
         else
         {
-            moveSpeed = 5f;
+            speed = 5;
         }
 
-        if (Input.GetKey(KeyCode.E))
+        // first-person look
+        float mouseX = Input.GetAxis("Mouse X") * lookSensitivity;
+        mouseX = Mathf.Clamp(mouseX, -20f, 70f);
+        float mouseY = Input.GetAxis("Mouse Y") * lookSensitivity;
+
+        transform.Rotate(0f, mouseX, 0f);
+
+        float newXRotation = _camera.localEulerAngles.x - mouseY;
+        if (newXRotation > 180f)
         {
-            top = 1;
-        } else
-        {
-            top = 0;
+            newXRotation -= 360f;
         }
 
-        if (Input.GetKey(KeyCode.Q))
-        {
-            top = -1;
-        }
-        else
-        {
-            top = 0;
-        }
-        Vector3 pos = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
-        if (Input.GetKey(KeyCode.E))
-        {
-            inLook = true;
-            Debug.Log(inLook);
-            pos += transform.right * 1f;
-            mainCam.transform.rotation = Quaternion.Euler(mainCam.transform.rotation.x, mainCam.transform.rotation.y, mainCam.transform.rotation.z + -45f);
-        } else { inLook = false; }
-        if (Input.GetKey(KeyCode.Q))
-        {
-            inLook = true;
-            Debug.Log(inLook);
-            pos -= transform.right * 1f;
-            mainCam.transform.rotation = Quaternion.Euler(mainCam.transform.rotation.x, mainCam.transform.rotation.y, mainCam.transform.rotation.z + 45f);
-        } else { inLook = false; }
-        mainCam.transform.position = pos;
+        newXRotation = Mathf.Clamp(newXRotation, -20f, 80f);
+
+        _camera.localEulerAngles = new Vector3(
+            newXRotation,
+            0f,
+            0f
+        );
     }
 
-    private void HandleMovement()
-    {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
 
-        Vector3 moveDirection = (transform.forward * verticalInput + transform.right * horizontalInput).normalized;
 
-        velocity.y += gravity * Time.deltaTime;
 
-        Vector3 movement = moveDirection * moveSpeed * Time.deltaTime;
-        controller.Move(movement + velocity * Time.deltaTime);
-
-        if (!inLook)
-        {
-            float rotationX = Input.GetAxis("Mouse X") * playerCamera.GetComponent<lookScript>().sensitivityY;
-            transform.Rotate(Vector3.up * rotationX);
-
-            Debug.Log("Searching 88");
-        }
-
-    }
 }
