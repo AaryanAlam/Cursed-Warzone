@@ -15,6 +15,9 @@ public class spine2Rot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.rotation = cam.rotation;
+        if (cam != null)
+        {
+            transform.rotation = cam.rotation;
+        }
     }
 }

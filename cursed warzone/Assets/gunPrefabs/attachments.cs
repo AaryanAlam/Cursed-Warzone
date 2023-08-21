@@ -74,7 +74,7 @@ public class attachments : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Y))
         {
             isActiveLaser = !isActiveLaser;
-            laser.GetComponent<LineRenderer>().enabled = !laser.GetComponent<LineRenderer>().enabled;
+            laser.GetComponent<laserScript>().enabled = !laser.GetComponent<laserScript>().enabled;
         }
 
     }

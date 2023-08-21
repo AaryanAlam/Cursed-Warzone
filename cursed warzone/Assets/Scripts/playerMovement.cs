@@ -17,10 +17,12 @@ public class playerMovement : MonoBehaviour
     public float superDashCost = 35.0f;
     private float _originalHeight;
     public bool j = true;
+    public bool isNightVisionActive;
 
 
     private CharacterController _controller;
     public Transform _camera;
+    public GameObject NVGFX;
 
     void Start()
     {
@@ -28,7 +30,7 @@ public class playerMovement : MonoBehaviour
         _originalHeight = _controller.height;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-
+        NVGFX.SetActive(false);
 
     }
     private void Awake()
@@ -41,7 +43,10 @@ public class playerMovement : MonoBehaviour
 
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            ToggleNightVision();
+        }
 
 
         // Getting x and z axis
@@ -109,7 +114,19 @@ public class playerMovement : MonoBehaviour
         );
     }
 
+    private void ToggleNightVision()
+    {
+        isNightVisionActive = !isNightVisionActive;
 
+        if (isNightVisionActive)
+        {
+            NVGFX.SetActive(true);
+        }
+        if (!isNightVisionActive)
+        {
+            NVGFX.SetActive(false);
+        }
+    }
 
 
 }

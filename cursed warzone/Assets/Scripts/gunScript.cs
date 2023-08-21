@@ -7,10 +7,8 @@ public class gunScript : MonoBehaviour
     public GameObject shotPS;
     public GameObject tip;
     public GameObject supTip;
-    public GameObject spherePrefab;
-    public GameObject objectToIgnore1;
-    public GameObject objectToIgnore2;
     public GameObject player;
+    private float shootDelay;
     public bool isSup;
     public bool isMouse2Down;
 
@@ -25,6 +23,8 @@ public class gunScript : MonoBehaviour
 
     void Update()
     {
+        shootDelay += Time.deltaTime;
+
         if (Input.GetMouseButtonDown(1))
         {
             isMouse2Down = true;
@@ -49,8 +49,13 @@ public class gunScript : MonoBehaviour
 
         if (Input.GetMouseButton(0))
         {
-            Shoot();
+            if (shootDelay >= 0.1f)
+            {
+                Shoot();
+                shootDelay = 0f;
+            }
         }
+
     }
 
     void HandleAiming()
@@ -75,17 +80,8 @@ public class gunScript : MonoBehaviour
             Instantiate(shotPS, supTip.transform.position, Quaternion.identity);
         }
 
-        Ray ray = new Ray(transform.position, -transform.forward);
-        RaycastHit hit;
-
-        if (objectToIgnore1 != null && objectToIgnore2 != null)
-        {
-            int layerMask = 1 << objectToIgnore1.layer | 1 << objectToIgnore2.layer;
-
-            if (Physics.Raycast(ray, out hit, 100f, ~layerMask))
-            {
-                GameObject sphere = Instantiate(spherePrefab, hit.point, Quaternion.identity);
-            }
-        }
+        
     }
+
+    
 }
