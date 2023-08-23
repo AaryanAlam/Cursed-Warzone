@@ -60,7 +60,7 @@ public class gunScript : MonoBehaviour
 
     void HandleAiming()
     {
-        // Calculate the offset based on your requirements
+        // Calculate the offssset based on your requirements
         Vector3 offset = new Vector3(0f, -0.15f, 0.7f);
 
         // Set the local position of the gun relative to the player's transform
