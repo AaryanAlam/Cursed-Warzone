@@ -6,6 +6,7 @@ TagManager:
   tags:
   - objectToIgnore1
   - objectToIgnore2
+  - BulletHolder
   layers:
   - Default
   - TransparentFX

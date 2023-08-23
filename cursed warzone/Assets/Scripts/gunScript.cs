@@ -11,7 +11,12 @@ public class gunScript : MonoBehaviour
     private float shootDelay;
     public bool isSup;
     public bool isMouse2Down;
-
+    public GameObject bullet;
+    private GameObject bulletHolder;
+    private RaycastHit hit;
+    private Ray Ray;
+    public GameObject impactEff;
+    public float bulletSpeed = 1400f;
     private Vector3 originalLocalPosition;
     private Quaternion originalLocalRotation;
 
@@ -19,6 +24,7 @@ public class gunScript : MonoBehaviour
     {
         originalLocalPosition = transform.localPosition;
         originalLocalRotation = transform.localRotation;
+        bulletHolder = GameObject.FindGameObjectWithTag("BulletHolder");
     }
 
     void Update()
@@ -38,6 +44,7 @@ public class gunScript : MonoBehaviour
         if (isMouse2Down)
         {
             HandleAiming();
+
         }
         else
         {
@@ -80,7 +87,7 @@ public class gunScript : MonoBehaviour
             Instantiate(shotPS, supTip.transform.position, Quaternion.identity);
         }
 
-        
+
     }
 
     
