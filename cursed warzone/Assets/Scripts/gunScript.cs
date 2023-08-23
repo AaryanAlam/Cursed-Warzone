@@ -14,17 +14,22 @@ public class gunScript : MonoBehaviour
     public GameObject bullet;
     private GameObject bulletHolder;
     private RaycastHit hit;
-    private Ray Ray;
     public GameObject impactEff;
     public float bulletSpeed = 1400f;
+    private Animator animator;
     private Vector3 originalLocalPosition;
     private Quaternion originalLocalRotation;
+    private Ray ray;
 
     void Start()
     {
         originalLocalPosition = transform.localPosition;
         originalLocalRotation = transform.localRotation;
         bulletHolder = GameObject.FindGameObjectWithTag("BulletHolder");
+        animator = GetComponent<Animator>();
+        ray = new Ray(tip.transform.position, -tip.transform.forward);
+
+
     }
 
     void Update()
@@ -56,12 +61,19 @@ public class gunScript : MonoBehaviour
 
         if (Input.GetMouseButton(0))
         {
+            shotAnim();
+
             if (shootDelay >= 0.1f)
             {
-                Shoot();
+                ShootEffect();
                 shootDelay = 0f;
             }
         }
+        if (Input.GetMouseButtonUp(0))
+        {
+            resetShotAnim();
+        }
+        Debug.DrawRay(ray.origin, ray.direction);
 
     }
 
@@ -76,7 +88,7 @@ public class gunScript : MonoBehaviour
         Camera.main.fieldOfView = 26.5f;
     }
 
-    void Shoot()
+    void ShootEffect()
     {
         if (!isSup)
         {
@@ -89,6 +101,30 @@ public class gunScript : MonoBehaviour
 
 
     }
+    public void Shot()
+    {
+        Vector3 rayOrigin = tip.transform.position;
+        Vector3 rayDirection = -tip.transform.forward;
 
-    
+        if (Physics.Raycast(rayOrigin, rayDirection, out hit, Mathf.Infinity))
+        {
+           GameObject ImpactEffGO = Instantiate(impactEff, hit.point, Quaternion.LookRotation(Vector3.up, hit.normal)) as GameObject;
+            Destroy(ImpactEffGO, 5);
+        }
+
+    }
+
+
+    void shotAnim()
+    {
+        animator.SetBool("IsShot", true);
+    }
+
+    void resetShotAnim()
+    {
+        animator.SetBool("IsShot", false);
+
+    }
+
+
 }
