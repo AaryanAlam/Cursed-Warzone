@@ -18,11 +18,13 @@ public class playerMovement : MonoBehaviour
     private float _originalHeight;
     public bool j = true;
     public bool isNightVisionActive;
+    public bool isGogglesActive;
 
 
     private CharacterController _controller;
     public Transform _camera;
     public GameObject NVGFX;
+    public GameObject cam;
 
     void Start()
     {
@@ -46,6 +48,10 @@ public class playerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.N))
         {
             ToggleNightVision();
+        }
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            ToggleGoggles();
         }
 
 
@@ -125,6 +131,22 @@ public class playerMovement : MonoBehaviour
         if (!isNightVisionActive)
         {
             NVGFX.SetActive(false);
+        }
+    }
+
+    private void ToggleGoggles()
+    {
+        isGogglesActive = !isGogglesActive;
+
+        if (isGogglesActive)
+        {
+            cam.GetComponent<Camera>().fieldOfView = 10f;
+            lookSensitivity = 0.5f;
+        }
+        if (!isGogglesActive)
+        {
+            cam.GetComponent<Camera>().fieldOfView = 90f;
+            lookSensitivity = 2f;
         }
     }
 

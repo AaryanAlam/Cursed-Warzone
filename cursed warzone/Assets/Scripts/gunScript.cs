@@ -55,8 +55,10 @@ public class gunScript : MonoBehaviour
         {
             transform.localPosition = originalLocalPosition;
             transform.localRotation = originalLocalRotation;
-            Camera.main.fieldOfView = 90f;
-
+            if (!player.GetComponent<playerMovement>().isGogglesActive)
+            {
+                Camera.main.fieldOfView = 90f;
+            }
         }
 
         if (Input.GetMouseButton(0))
