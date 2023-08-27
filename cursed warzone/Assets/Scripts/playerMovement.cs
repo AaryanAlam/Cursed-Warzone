@@ -24,6 +24,7 @@ public class playerMovement : MonoBehaviour
     private CharacterController _controller;
     public Transform _camera;
     public GameObject NVGFX;
+    public GameObject GogFX;
     public GameObject cam;
 
     void Start()
@@ -91,7 +92,7 @@ public class playerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift))
         {
             speed = 8f;
-            
+
         }
         else
         {
@@ -142,11 +143,13 @@ public class playerMovement : MonoBehaviour
         {
             cam.GetComponent<Camera>().fieldOfView = 10f;
             lookSensitivity = 0.5f;
+            GogFX.SetActive(true);
         }
         if (!isGogglesActive)
         {
             cam.GetComponent<Camera>().fieldOfView = 90f;
             lookSensitivity = 2f;
+            GogFX.SetActive(false);
         }
     }
 
