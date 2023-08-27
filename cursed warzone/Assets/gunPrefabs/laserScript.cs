@@ -7,6 +7,8 @@ public class laserScript : MonoBehaviour
     public GameObject spherePrefab;
     public GameObject objectToIgnore1;
     public GameObject objectToIgnore2;
+
+    public float distance;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,14 +25,13 @@ public class laserScript : MonoBehaviour
         {
             int layerMask = 1 << objectToIgnore1.layer | 1 << objectToIgnore2.layer;
 
-            if (Physics.Raycast(ray, out hit, 15f, ~layerMask))
+            if (Physics.Raycast(ray, out hit, distance, ~layerMask))
             {
                 GameObject sphere = Instantiate(spherePrefab, hit.point, Quaternion.identity);
                 StartCoroutine(PauseCoroutine(sphere));
             }
             else
             {
-                Debug.LogError("No Ray");
             }
         }
         else
@@ -38,7 +39,7 @@ public class laserScript : MonoBehaviour
             Debug.LogError("Object to Ignore null");
         }
 
-        Debug.DrawRay(ray.origin, ray.direction);
+        Debug.DrawRay(ray.origin, ray.direction, Color.red);
     }
 
     IEnumerator PauseCoroutine(GameObject sphere)

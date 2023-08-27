@@ -16,7 +16,9 @@ public class attachments : MonoBehaviour
 
     // GameObjects
     public GameObject laser;
+    public GameObject laserLight;
     public GameObject light;
+    public GameObject lightLight;
     public GameObject sup;
     public GameObject scope;
     public GameObject tip;
@@ -69,12 +71,12 @@ public class attachments : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.U))
         {
             isActiveLight = !isActiveLight;
-            light.SetActive(!light.active);
+            lightLight.SetActive(!lightLight.active);
         }
         if (Input.GetKeyDown(KeyCode.Y))
         {
             isActiveLaser = !isActiveLaser;
-            laser.GetComponent<laserScript>().enabled = !laser.GetComponent<laserScript>().enabled;
+            laserLight.SetActive(!laserLight.active);
         }
 
     }

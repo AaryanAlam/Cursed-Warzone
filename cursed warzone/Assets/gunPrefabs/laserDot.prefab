@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8894611083761280470}
   - component: {fileID: 7283801003357905262}
   - component: {fileID: 2327937185105761795}
-  m_Layer: 3
+  m_Layer: 2
   m_Name: laserDot
   m_TagString: objectToIgnore1
   m_Icon: {fileID: 0}
