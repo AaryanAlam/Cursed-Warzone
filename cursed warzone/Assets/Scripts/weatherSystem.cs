@@ -28,7 +28,23 @@ public class weatherSystem : MonoBehaviour
     void Update()
     {
         Timer += Time.deltaTime;
-
+        if (Input.GetKeyDown(KeyCode.Backslash))
+        {
+            if (weatherSun)
+            {
+                Sunny();
+                TimerInt = Random.Range(120, 300);
+                Debug.Log(TimerInt);
+                Timer = 0;
+            }
+            else
+            {
+                Rain();
+                TimerInt = Random.Range(120, 300);
+                Debug.Log(TimerInt);
+                Timer = 0;
+            }
+        }
         if (TimerInt < Timer)
         {
             if (weatherSun)
