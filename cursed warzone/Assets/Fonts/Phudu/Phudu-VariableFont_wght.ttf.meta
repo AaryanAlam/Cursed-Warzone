@@ -1,0 +1,28 @@
+fileFormatVersion: 2
+guid: cf44f4a37248d2949b8a82f090fd44a4
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Phudu
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 1baa494c1fc2f964fa053be1426b4ca8, type: 3}
+  - {fileID: 12800000, guid: bad6106293f8b994ab919f47906c04c5, type: 3}
+  - {fileID: 12800000, guid: 7af4d7a68b4986447b401c5df5d459bf, type: 3}
+  - {fileID: 12800000, guid: 740e09c7b77993c4b8c419c11843773e, type: 3}
+  - {fileID: 12800000, guid: 4fb3bd55cfdd8324d943155809bb1849, type: 3}
+  - {fileID: 12800000, guid: 12713e53304855b44b6ddb63d157bc21, type: 3}
+  - {fileID: 12800000, guid: b56a43797d416034ba8534d718b604d9, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 740e09c7b77993c4b8c419c11843773e
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Phudu
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 12713e53304855b44b6ddb63d157bc21, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
