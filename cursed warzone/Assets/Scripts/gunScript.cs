@@ -51,6 +51,7 @@ public class gunScript : MonoBehaviour
             HandleAiming();
 
         }
+
         else
         {
             transform.localPosition = originalLocalPosition;
@@ -63,11 +64,11 @@ public class gunScript : MonoBehaviour
 
         if (Input.GetMouseButton(0))
         {
-            shotAnim();
 
             if (shootDelay >= 0.1f)
             {
                 ShootEffect();
+                shotAnim();
                 shootDelay = 0f;
             }
         }
@@ -112,6 +113,12 @@ public class gunScript : MonoBehaviour
         {
            GameObject ImpactEffGO = Instantiate(impactEff, hit.point, Quaternion.LookRotation(Vector3.up, hit.normal)) as GameObject;
             Destroy(ImpactEffGO, 5);
+            GameObject BulletGO = Instantiate(bullet, bulletHolder.transform.position, Quaternion.identity) as GameObject;
+            Destroy(BulletGO, 5);
+
+                Vector3 bulletDirection = (hit.point - BulletGO.transform.position).normalized;
+                BulletGO.transform.rotation = Quaternion.LookRotation(bulletDirection);
+                BulletGO.GetComponent<Rigidbody>().velocity = bulletDirection * bulletSpeed;
         }
 
     }
