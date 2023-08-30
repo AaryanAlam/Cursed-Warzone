@@ -34,7 +34,7 @@ public class playerMovement : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         NVGFX.SetActive(false);
-
+        cam.GetComponent<DeferredNightVisionEffect>().enabled = false;
     }
     private void Awake()
     {
@@ -128,10 +128,12 @@ public class playerMovement : MonoBehaviour
         if (isNightVisionActive)
         {
             NVGFX.SetActive(true);
+            cam.GetComponent<DeferredNightVisionEffect>().enabled = true;
         }
         if (!isNightVisionActive)
         {
             NVGFX.SetActive(false);
+            cam.GetComponent<DeferredNightVisionEffect>().enabled = false;
         }
     }
 
