@@ -12,17 +12,17 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mainMenu.SetActive(true);
-        p.GetComponent<playerMovement>().lookSensitivity = 0;
-        Cursor.lockState = CursorLockMode.Confined;
-        Cursor.visible = true;
+        //mainMenu.SetActive(true);
+        //p.GetComponent<playerMovement>().lookSensitivity = 0;
+        //Cursor.lockState = CursorLockMode.Confined;
+        //Cursor.visible = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Cursor.lockState = CursorLockMode.Confined;
-        Cursor.visible = true;
+        //Cursor.lockState = CursorLockMode.Confined;
+        //Cursor.visible = true;
         if (Input.GetKeyDown(KeyCode.Space) && mainMenu.active)
         {
             mainMenu.SetActive(false);
@@ -46,8 +46,8 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 1;
             p.GetComponent<playerMovement>().lookSensitivity = 2;
-            Cursor.lockState = CursorLockMode.Confined;
-            Cursor.visible = true;
+            //Cursor.lockState = CursorLockMode.Confined;
+            //Cursor.visible = true;
         }
     }
 
