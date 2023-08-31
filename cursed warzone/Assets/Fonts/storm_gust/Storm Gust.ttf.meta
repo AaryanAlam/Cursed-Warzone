@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 065d2ccadda65264993668216715954b
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Storm Gust
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 200f4829c0bee70498e266d16b29e3a6, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

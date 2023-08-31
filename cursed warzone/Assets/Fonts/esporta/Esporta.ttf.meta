@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 8fb7ec34447b5074b9b52f746b0f3cf9
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Esporta
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 9c6027fb2bcb3184fa1ce1adc548a7d6, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
