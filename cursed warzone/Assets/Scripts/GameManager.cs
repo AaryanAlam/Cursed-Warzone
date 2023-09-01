@@ -12,51 +12,40 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //mainMenu.SetActive(true);
-        //p.GetComponent<playerMovement>().lookSensitivity = 0;
-        //Cursor.lockState = CursorLockMode.Confined;
-        //Cursor.visible = true;
+        mainMenu.SetActive(true);
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Cursor.lockState = CursorLockMode.Confined;
-        //Cursor.visible = true;
         if (Input.GetKeyDown(KeyCode.Space) && mainMenu.active)
         {
+            StartGame();
             mainMenu.SetActive(false);
             p.GetComponent<playerMovement>().lookSensitivity = 2;
         }
 
         if (!mainMenu.active && Input.GetKeyDown(KeyCode.Alpha0))
         {
-            mainMenu.SetActive(true);
             p.GetComponent<playerMovement>().lookSensitivity = 0;
+            Options();
         }
 
         if (mainMenu.active)
         {
             Time.timeScale = 0.0000001f;
             p.GetComponent<playerMovement>().lookSensitivity = 0;
-            Cursor.lockState = CursorLockMode.Confined;
-            Cursor.visible = true;
         }
         else
         {
             Time.timeScale = 1;
             p.GetComponent<playerMovement>().lookSensitivity = 2;
-            //Cursor.lockState = CursorLockMode.Confined;
-            //Cursor.visible = true;
         }
     }
 
     public void StartGame()
     {
-        mainMenu.SetActive(false);
-        p.GetComponent<playerMovement>().lookSensitivity = 2;
-        //Cursor.lockState = CursorLockMode.Locked;
-        //Cursor.visible = false;
+        
         
     }
 
@@ -72,7 +61,6 @@ public class GameManager : MonoBehaviour
 
     public void Back()
     {
-        mainMenu.SetActive(true);
-        p.GetComponent<playerMovement>().lookSensitivity = 0;
+        
     }
 }
