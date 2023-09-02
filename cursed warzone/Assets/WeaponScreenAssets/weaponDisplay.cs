@@ -27,10 +27,6 @@ public class weaponDisplay : MonoBehaviour
         fireRate.value = gun.fireRate;
         accuracy.value = gun.accuracy;
         sprite.sprite = gun.sprite;
-
-        scope.transform.position = gun.scopePos;
-        extra1.transform.position = gun.extra1Pos;
-        extra2.transform.position = gun.extra2Pos;
     }
 
 
