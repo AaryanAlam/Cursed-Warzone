@@ -47,7 +47,10 @@ public class GameManager : MonoBehaviour
         else
         {
             Time.timeScale = 1;
-            p.GetComponent<playerMovement>().lookSensitivity = 2;
+            if (!p.GetComponent<playerMovement>().isGogglesActive)
+            {
+                p.GetComponent<playerMovement>().lookSensitivity = 2f;
+            }
         }
     }
 

@@ -13,7 +13,7 @@ public class playerMovement : MonoBehaviour
     public float jumpSpeed = 5f;
     public float gravity = -9.81f;
     public float crouchHeight = 1f;
-    public float lookSensitivity = 2f;
+    public float lookSensitivity;
     public float superDashCost = 35.0f;
     private float _originalHeight;
     public bool j = true;
@@ -143,8 +143,8 @@ public class playerMovement : MonoBehaviour
 
         if (isGogglesActive)
         {
-            cam.GetComponent<Camera>().fieldOfView = 10f;
-            lookSensitivity = 0.5f;
+            cam.GetComponent<Camera>().fieldOfView = 3f;
+            lookSensitivity = 0.1f;
             GogFX.SetActive(true);
         }
         if (!isGogglesActive)
