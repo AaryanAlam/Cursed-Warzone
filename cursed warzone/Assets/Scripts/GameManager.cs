@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public GameObject mainMenu;
+    public GameObject attachmentMenu;
     public GameObject p;
     public Image backImg;
 
@@ -23,6 +24,13 @@ public class GameManager : MonoBehaviour
             StartGame();
             mainMenu.SetActive(false);
             p.GetComponent<playerMovement>().lookSensitivity = 2;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Minus)) 
+        {
+            attachmentMenu.active = true;
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
         }
 
         if (!mainMenu.active && Input.GetKeyDown(KeyCode.Alpha0))

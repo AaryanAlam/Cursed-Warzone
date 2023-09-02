@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SOchanger : MonoBehaviour
 {
-    [SerializeField] private ScriptableObject[] scriptableObjects;
+    [SerializeField] public ScriptableObject[] scriptableObjects;
     [SerializeField] private weaponDisplay wD;
     public GameObject mainMenu;
     int currentIndex;
