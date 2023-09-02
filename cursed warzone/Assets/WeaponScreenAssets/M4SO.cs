@@ -9,6 +9,9 @@ public class M4SO : ScriptableObject
     public string description;
 
     public Sprite sprite;
+    public Vector3 scopePos;
+    public Vector3 extra1Pos;
+    public Vector3 extra2Pos;
 
     public float Damage;
     public float fireRate;

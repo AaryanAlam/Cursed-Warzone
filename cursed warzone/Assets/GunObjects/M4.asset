@@ -17,6 +17,9 @@ MonoBehaviour:
     rapid fire rate, and adaptability. It's a popular choice for both close-quarters
     combat and medium-range engagements.
   sprite: {fileID: 21300000, guid: 854b3ccd23830e54ab415ff13e3eab27, type: 3}
+  scopePos: {x: 160, y: 140, z: 0}
+  extra1Pos: {x: 212, y: 75, z: 0}
+  extra2Pos: {x: 139, y: 43, z: 0}
   Damage: 69
   fireRate: 78
   accuracy: 84

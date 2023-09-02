@@ -13,6 +13,9 @@ public class weaponDisplay : MonoBehaviour
     [SerializeField] private Slider fireRate;
     [SerializeField] private Slider accuracy;
     [SerializeField] private Image sprite;
+    [SerializeField] private GameObject scope;
+    [SerializeField] private GameObject extra1;
+    [SerializeField] private GameObject extra2;
 
     public void displayGun(M4SO gun)
     {
@@ -24,6 +27,10 @@ public class weaponDisplay : MonoBehaviour
         fireRate.value = gun.fireRate;
         accuracy.value = gun.accuracy;
         sprite.sprite = gun.sprite;
+
+        scope.transform.position = gun.scopePos;
+        extra1.transform.position = gun.extra1Pos;
+        extra2.transform.position = gun.extra2Pos;
     }
 
 
