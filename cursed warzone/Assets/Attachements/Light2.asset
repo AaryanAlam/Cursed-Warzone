@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2be964843307de4f9be786dd4915f31, type: 3}
   m_Name: Light2
   m_EditorClassIdentifier: 
-  img: {fileID: 0}
-  name: 
-  type: 
+  img: {fileID: 21300000, guid: 096aec845f64816449bfd2b44c36ad87, type: 3}
+  name: Light sharp
+  type: extra2
