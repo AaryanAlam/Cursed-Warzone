@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Mail;
 using UnityEngine;
 
 public class SOchanger : MonoBehaviour
 {
     [SerializeField] public ScriptableObject[] scriptableObjects;
     [SerializeField] private weaponDisplay wD;
-    public GameObject mainMenu;
+    //public GameObject mainMenu;
+    public CanvasGroup mm2;
+    public CanvasGroup attachmentsM;
     int currentIndex;
     bool i = true;
 
@@ -26,7 +29,10 @@ public class SOchanger : MonoBehaviour
 
     public void Play()
     {
-        mainMenu.SetActive(false);
+        mm2.alpha = 0;
+        mm2.blocksRaycasts = false;
+        attachmentsM.alpha = 0;
+        attachmentsM.blocksRaycasts = false;
         i = false;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
